@@ -25,12 +25,11 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank
-    @Size (min = 3)
+    @NotBlank(message = "El nombre del autor es obligatorio")
+    @Size(min = 3, message = "El nombre debe tener al menos 3 caracteres")
     private String nombre;
-
 
     @JsonIgnore
     @ManyToMany
-    private List <Libro> libros = new ArrayList<>();
+    private List<Libro> libros = new ArrayList<>();
 }

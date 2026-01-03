@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -28,24 +27,24 @@ public class Libro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank
-    @Size(min = 3)
+    @NotBlank(message = "El título es obligatorio")
+    @Size(min = 3, message = "El título debe tener al menos 3 caracteres")
     private String titulo;
 
-    @NotBlank
-    @Column (unique = true)
+    @NotBlank(message = "El ISBN es obligatorio")
+    @Column(unique = true)
+    @Size(min = 10, max = 13, message = "El ISBN debe tener entre 10 y 13 caracteres")
     private String isbn;
 
-    @NotNull
+    @NotNull(message = "La fecha de publicación es obligatoria")
     private LocalDate fechaPublicacion;
-
 
     @Column(updatable = false)
     @CreationTimestamp
     protected LocalDateTime fechaCreacion;
 
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List <Ejemplar> ejemplares = new ArrayList<>();
+    private List<Ejemplar> ejemplares = new ArrayList<>();
 
     @JsonIgnore
     @ManyToMany
@@ -54,6 +53,5 @@ public class Libro {
             joinColumns = @JoinColumn(name = "libro_id"),
             inverseJoinColumns = @JoinColumn(name = "autor_id")
     )
-    private List <Autor> autores = new ArrayList<>();
-
-   }
+    private List<Autor> autores = new ArrayList<>();
+}

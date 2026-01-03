@@ -8,8 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,11 +20,9 @@ public class Ejemplar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
     private String descripcion;
 
-    @NotNull
-    private boolean disponible;
+    @NotNull(message = "Debes indicar si está disponible (true/false)")
 
     @JsonIgnore
     @ManyToOne
