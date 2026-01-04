@@ -140,4 +140,8 @@ public class ApiLibroControlador {
         }
         return ResponseEntity.notFound().build();
     }
+    @GetMapping("/api/libros/cuenta")
+    public ResponseEntity<Long> contarLibrosAnterioresA(@RequestParam int anio) {
+        return ResponseEntity.ok(libroRepositorio.contarLibrosAntesDeAnio(anio));
+    }
 }

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class LibroYNumEjemplaresDTO {
 
 
-    private long id;
+    private Long id;
     private String titulo;
     private String isbn;
     private LocalDate fechaPublicacion;
