@@ -23,6 +23,7 @@ public class Ejemplar {
     private String descripcion;
 
     @NotNull(message = "Debes indicar si está disponible (true/false)")
+    private Boolean disponible;
 
     @JsonIgnore
     @ManyToOne
