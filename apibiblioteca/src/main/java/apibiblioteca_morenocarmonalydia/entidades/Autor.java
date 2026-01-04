@@ -23,7 +23,7 @@ public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "El nombre del autor es obligatorio")
     @Size(min = 3, message = "El nombre debe tener al menos 3 caracteres")

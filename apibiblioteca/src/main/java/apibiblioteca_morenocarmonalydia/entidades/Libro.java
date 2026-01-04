@@ -1,6 +1,5 @@
 package apibiblioteca_morenocarmonalydia.entidades;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,7 +24,7 @@ import java.util.List;
 public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "El título es obligatorio")
     @Size(min = 3, message = "El título debe tener al menos 3 caracteres")
@@ -46,7 +45,6 @@ public class Libro {
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ejemplar> ejemplares = new ArrayList<>();
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "libro_autor",
