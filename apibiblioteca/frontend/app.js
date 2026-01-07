@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', cargarTodos);
 
 function cargarTodos() {
     document.getElementById('busquedaTitulo').value = '';
-    fetch(`${API_URL}?page=0&size=20`) // AJAX con FETCH
+    fetch(`${API_URL}?page=0&size=20`)
         .then(response => {
             if (!response.ok) throw new Error('Error API');
             return response.json();
